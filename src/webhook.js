@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const receiveMessage = require('./facebook-messenger/receiveMessage')
-
+const receiveMessage = require('./facebook-messenger/receive-message')
+const config = require('config')
 
 const APP_ID = (process.env.MESSENGER_APP_ID) ?
 	process.env.MESSENGER_APP_ID :
@@ -25,17 +25,31 @@ const SERVER_URL = (process.env.SERVER_URL) ?
 
 // Just stop the program if we don't have what we need
 if (!(APP_SECRET && VALIDATION_TOKEN && SERVER_URL)) {
-	log.error("Missing config values")
+	console.log("Missing config values")
 	process.exit(1)
 }
 
 const app  = express();
+app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
+app.get('/webhook', function(req, res) {
+	if (req.query['hub.mode'] === 'subscribe' &&
+		req.query['hub.verify_token'] === VALIDATION_TOKEN) {
+		console.log("Validating webhook")
+		res.status(200).send(req.query['hub.challenge'])
+	} else {
+		console.log(req.query['hub.verify_token']);
+		console.log(VALIDATION_TOKEN);
+		console.log("Failed validation. Make sure the validation tokens match.")
+		res.sendStatus(403)
+	}
+})
 
 app.post('/webhook', (req, res) => {
-
 	const data = req.body
-
+  console.log(data);
 	// Make sure this is a page subscription
 	if (data.object === 'page') {
 		// Iterate over each entry
@@ -46,7 +60,7 @@ app.post('/webhook', (req, res) => {
 			pageEntry.messaging.forEach((messagingEvent) => {
 				if (messagingEvent.message) return receiveMessage(messagingEvent)
 				if (messagingEvent.postback) return receivePostback(messagingEvent)
-				return log.debug("Webhook received unknown messagingEvent: ", messagingEvent)
+				return console.log("Webhook received unknown messagingEvent: ", messagingEvent)
 			})
 		})
 	}

@@ -1,15 +1,11 @@
 {
-	"prod": true,
-	"appId": "789917191165094",
-	"appSecret": "c501b8e0f28437684b81a5cee76359f4",
-	"pageId": "1903934189839811",
-	"pageAccessToken": "EAALObO2U1KYBAFPQwAHBSyxURuQuemPVxbjF8FKMplRxIsFCrvpR8QMXq1vzcxXKrdzJvNCbDunXT5UquNVNPVqNBhQBTZA4r7RBx6gifMFS0FHJ60tmm1vTsHdxmRAPdPxSiHeuE96azUcIQXjZCYAESEMcqMBnOPp6049AZDZD",
-	"validationToken": "RNDWorks",
+	"prod": false,
+	"appId": "852862988184954",
+	"appSecret": "d2e47ce806133366057dd6626535bf3b",
+	"pageId": "787416388082751",
+	"pageAccessToken": "EAAMHrKNz7XoBAGwdYLNzegVmGIiv4JMSJIJdT5ziAv0JGVFTeF2z7iF5gfCvdSz8ZA0ZCpW1K69Wlgyymh7drzYu8a9eZAn1CgLPrZBTMtU6UDmguHtZBF0YXhoYow36rqJ8WgP5ojZCK03NrGr03jZBI0ctxEwBi2rUXfjQHIsZBQZDZD",
+	"validationToken": "asd",
 	"serverURL": "https://lt-bot-dev.rnd.works",
-	"witServerToken": "XUSCUGLGWMOHMU6SYCN2RYQLQCZBAIS4",
-	"databaseURL": "mongodb://localhost:27017/",
-	"cloudVisionAPIKey":"AIzaSyAbpi9UUFqSmGbFIHYX2quOecqYDHveQ9Y",
-	"databaseNamespace": "lnt",
 	"minHumanDelay": 300,
 	"perCharHumanDelay": 10,
 	"bufferDelay": 500,
@@ -36,12 +32,6 @@
 				"Moro...",
 				"Heips..."
 			]
-		},
-		"images": [
-			"/assets/ketsuppipullo_lasa.JPG",
-			"/assets/sukkahousu_lasa.JPG",
-			"/assets/tuhka_moottoritie_lasa.JPG",
-			"/assets/vaaralliset_jatteet_lasa.JPG"
-		]
+		}
 	}
 }

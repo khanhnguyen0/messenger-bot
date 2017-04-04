@@ -1,10 +1,10 @@
 // Send messages to users
 
-const log			= require('loglevel-debug')('*:send-message')
+// const log			= require('loglevel-debug')('*:send-message')
 const config		= require('config')
-const fbAPI			= require('./send-api')
+const fbAPI			= require('./message-api')
 const appearHuman	= require('../util/appear-human')
-const sentenceSplit	 = require('../util/sentence-split')
+// const sentenceSplit	 = require('../util/sentence-split')
 
 // Facebook Messenger API max message length
 const MAX_MESSAGE_LENGTH	= config.get('apiMaxMessageLength')
@@ -16,7 +16,7 @@ const MAX_QR_TITLE_LENGTH	= config.get('apiMaxQuickMessageTitleLength')
 */
 const textMessage = (id, text) => {
 
-	log.debug("Sending a text message")
+	console.log("Sending a text message")
 	// console.log('text :',text)
 	return new Promise((resolve) => {
 
@@ -82,7 +82,7 @@ const textMessage = (id, text) => {
 */
 const quickReply = (id, choices, text) => {
 
-	log.debug("Sending a quick reply")
+	console.log("Sending a quick reply")
 
 	return typingOn(id)
 	.then( () => appearHuman(choices) )
@@ -122,7 +122,7 @@ const quickReply = (id, choices, text) => {
 */
 const locationQuickReply = (id, text) => {
 
-	log.debug("Sending a location quick reply")
+	console.log("Sending a location quick reply")
 
 	return typingOn(id)
 	.then( () => appearHuman(text) )
@@ -158,7 +158,7 @@ const locationQuickReply = (id, text) => {
 */
 const readReceipt = (id) => {
 
-	log.debug("Sending a read receipt to mark message as seen")
+	console.log("Sending a read receipt to mark message as seen")
 
 	const messageData = {
 		recipient: {
@@ -177,7 +177,7 @@ const readReceipt = (id) => {
 */
 const typingOn = (id) => {
 
-	log.debug("Turning typing indicator on")
+	console.log("Turning typing indicator on")
 
 	const messageData = {
 		recipient: {
@@ -196,7 +196,7 @@ const typingOn = (id) => {
 */
 const typingOff = (id) => {
 
-	log.debug("Turning typing indicator off")
+	console.log("Turning typing indicator off")
 
 	const messageData = {
 		recipient: {
@@ -214,7 +214,7 @@ const typingOff = (id) => {
 */
 const imageMessage = (id, url) => {
 
-	log.debug("Sending image message")
+	console.log("Sending image message")
 
 	const messageData = {
 		recipient: {
@@ -240,7 +240,7 @@ const imageMessage = (id, url) => {
 */
 const templateMessage = (id, {title, subtitle, item_url, image_url, buttonTitle, webview_height_ratio, messenger_extensions}) => {
 
-	log.debug("Sending template message")
+	console.log("Sending template message")
 
 	let buttonData
 	if (buttonTitle) {
@@ -289,7 +289,7 @@ const templateMessage = (id, {title, subtitle, item_url, image_url, buttonTitle,
 */
 const postbackMessage = (id, {title, subtitle, item_url, image_url, buttons}) => {
 
-	log.debug("Sending postback message")
+	console.log("Sending postback message")
 
 	const messageData = {
 		recipient: {
@@ -326,7 +326,7 @@ const postbackMessage = (id, {title, subtitle, item_url, image_url, buttons}) =>
 */
 const carouselMessage = (id, elements) => {
 
-	log.debug("Sending carousel message")
+	console.log("Sending carousel message")
 
 	const messageData = {
 		recipient: {
@@ -355,7 +355,7 @@ const carouselMessage = (id, elements) => {
  */
 const fileMessage = (id, url) => {
 
-	log.debug("Sending file message:")
+	console.log("Sending file message:")
 
 	var messageData = {
 		recipient: {

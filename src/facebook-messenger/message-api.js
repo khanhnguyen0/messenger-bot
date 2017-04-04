@@ -1,6 +1,6 @@
 //The facebook messenger send api is used through this
 
-const log		= require('loglevel-debug')('*:send-api')
+// const log		= require('loglevel-debug')('*:send-api')
 const config	= require('config')
 const request	= require('request-promise-native')
 
@@ -36,7 +36,7 @@ const callSendAPI = (messageData) => {
 		.then( (response) => {
 
 			if (response.statusCode !== 200) {
-				log.error("Failed calling Send API", response.statusCode, response.statusMessage, response.body.error)
+				console.log("Failed calling Send API", response.statusCode, response.statusMessage, response.body.error)
 				return reject()
 			}
 
@@ -44,10 +44,10 @@ const callSendAPI = (messageData) => {
 			const messageId = response.body.message_id
 
 			if (messageId) {
-				log.debug("Successfully sent message with id %s to recipient %s", messageId, recipientId)
+				console.log("Successfully sent message with id %s to recipient %s", messageId, recipientId)
 			}
 			else {
-				log.debug("Successfully called Send API for recipient %s", recipientId)
+				console.log("Successfully called Send API for recipient %s", recipientId)
 			}
 
 			return resolve()
