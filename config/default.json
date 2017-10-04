@@ -1,9 +1,9 @@
 {
 	"prod": false,
-	"appId": "135586257175108",
-	"appSecret": "7ba8fbae5a90d30180c6b2c2fe8ce7cc",
+	"appId": "102323067189984",
+	"appSecret": "eb6ad34c51ed5187eacafaf2bc8e787c",
 	"pageId": "2022989977936156",
-	"pageAccessToken": "EAAB7UKKyAkQBAJTUXZAy4ZCojARCLkJqZAGQOHPABl0yR3U9n6BZB93e8FfBKTSO8exHkZAbyU75EkRhddOYicIORfZAPqtr6sR0PFIYin9elhu4dVfqPpDUabCGKRZBbfz47lj5JsgMoKlM2ODTCHsf3pH65uOQDmuNU5aXINkNgZDZD",
+	"pageAccessToken": "EAABdDZCISeuABAB20zdJGN2ZCHPXzxbRlh6nLzPRsA6FlXkC7diF93dEzGW4Eqbzf60hx4ORv1nfznNZApHoAMB5ZCGFgmAswFTvxzt2w26RMumZB570oopGi3SrZB6e32LMDyh7IutP38kCpAzZCgIiz7HmROSzJNYwva2a21abgZDZD",
 	"validationToken": "asd",
 	"serverURL": "https://lt-bot-dev.rnd.works",
 	"minHumanDelay": 300,
