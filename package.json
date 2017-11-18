@@ -21,6 +21,7 @@
     "body-parser": "^1.17.1",
     "config": "^1.25.1",
     "express": "^4.15.2",
+    "javascript-state-machine": "^3.0.1",
     "mongoose": "^4.11.14",
     "ramda": "^0.23.0",
     "request": "^2.81.0",
