@@ -89,13 +89,13 @@ const quickReply = (id, choices, text) => {
 	.then( () => {
 		// console.log(choices)
 		// Create the replies from the choices
-		const replies = choices.map( (choice) => {
-			if (Array.isArray(choice)) choice = choice[0]
-			const title = choice.length < MAX_QR_TITLE_LENGTH ? choice : choice.substring(0,MAX_QR_TITLE_LENGTH-3) + '...'
+		const replies = choices.map( ({title,payload}) => {
+			// if (Array.isArray(choice)) choice = choice[0]
+			title = title.length < MAX_QR_TITLE_LENGTH ? title : title.substring(0,MAX_QR_TITLE_LENGTH-3) + '...'
 			return {
 				content_type : 'text',
 				title,
-				payload : choice
+				payload
 			}
 
 		})

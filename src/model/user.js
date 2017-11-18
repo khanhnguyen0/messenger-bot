@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    "id": String,
+    "id": {type:String,unique:true},
     "name": String,
     "age": String,
     "phone": String,
@@ -11,13 +11,15 @@ const userSchema = mongoose.Schema({
         "level": String,
         "from": String,
         "to": String,
-        "school": String
+        "school": String,
+        "degree":String
     }],
     "experience": [{
     	"from": String,
     	"to": String,
     	"company": String,
-    	"description": String
+    	"description": String,
+      "title":String
     }],
     "skill": [{
     	"name": String,
