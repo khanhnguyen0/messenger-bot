@@ -5,5 +5,5 @@ const process = require('process')
 const config = require('./config/config_manager')(process.env.production)
 
 require('http').createServer(app).listen(80, ()=>{
-  console.log('listening on port 6000');
+  console.log('listening on port 80');
 })
