@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
     }],
     "skill": [{
     	"name": String,
-    	"proficiency": String
+    	"level": String
     }]
 });
 

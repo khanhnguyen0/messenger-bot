@@ -6,6 +6,7 @@ const send = require('../facebook-messenger/send-message')
 const mongoose = require('mongoose')
 const askEducation = require('../user-info/education')
 const askExperience = require('../user-info/experience')
+const askSkill = require('../user-info/skill')
 const User = require('../model/user.js');
 
 
@@ -16,12 +17,12 @@ module.exports = async(senderId, message,quickReply) => {
     if (u)
     // return
     {
-      const experience = await askExperience(senderId,message)
-      if (experience) {
-        u.experience.push(experience)
+      const skill = await askSkill(senderId,message)
+      if (skill) {
+        u.skill.push(skill)
         u.save((err,updated)=>{
           if (err) return send.textMessage(senderId,"Error adding education")
-          return send.textMessage(senderId,"experience added")
+          return send.textMessage(senderId,"skill added")
         })
       }
     } else {
