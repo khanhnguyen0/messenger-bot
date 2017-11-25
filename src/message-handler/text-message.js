@@ -10,11 +10,11 @@ const askSkill = require('../user-info/skill')
 const User = require('../model/user.js');
 const state = {}
 
-mongoose.connect('mongodb://root:root@ds159254.mlab.com:59254/refugee')
-mongoose.Promise = require('bluebird')
-module.exports = async(senderId, message,quickReply) => {
+module.exports = async(senderId, message, quickReply) => {
+  mongoose.connect('mongodb://root:root@ds159254.mlab.com:59254/refugee')
+  mongoose.Promise = require('bluebird')
+  const u = await User.findOne({id: senderId})
 
-    const u = await User.findOne({id: senderId})
     if (u)
     // return
     {
@@ -88,6 +88,7 @@ module.exports = async(senderId, message,quickReply) => {
       }
 
     } else {
+      console.log('NOT A USER YET')
       return createUser(senderId, message)
     }
 }

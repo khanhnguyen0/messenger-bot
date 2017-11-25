@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sewi CV - {{name}}</title>
+	<meta name="viewport" content="width=device-width"/>
+	<meta name="description" content="Sewi"/>
+	<meta charset="UTF-8"> 
+
+	<link rel="stylesheet" type="text/css" href="/style/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<div id="cv">
+		<div id="general-info">
+			<div class="left-column">
+				<h1>{{name}}</h1>
+				<h2>{{age}} years old</h2>
+			</div>
+			<div class="right-column">
+				<h4>Email: {{email}}</h4>
+				<h4>Phone: {{phone}}</h4>
+				<h4>Adress: {{address}}</h4>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+
+		<div id="main-cv">
+			<section id="experience">
+				<div class="section-title">
+					<h2>Work experience</h2>
+				</div>
+				<div class="section-content">
+					{{#experience}}
+					<article>
+						<h3>{{title}} at {{company}}</h3>
+						<div class="year">{{from}} - {{to}}</div>
+						<div class="description">{{description}}</div>
+					</article>
+					{{/experience}}
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section id="skill">
+				<div class="section-title">
+					<h2>
+						Key skills
+					</h2>
+				</div>
+				<div class="section-content">
+					{{#skill}}
+					<article>
+						<h4>{{name}}</h4>
+						<div class="proficiency">
+							{{level}}
+						</div>
+					</article>
+					{{/skill}}
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section id="education">
+				<div class="section-title">
+					<h2>
+						Education
+					</h2>
+				</div>
+				<div class="section-content">
+					{{#education}}
+					<article>
+						<h3>{{school}}</h3>
+						<div class="year">{{from}} - {{to}}</div>
+						<div class="degree-level">{{level}}</div>
+						<div class="degree-name">{{degree}}</div>
+					</article>
+					{{/education}}
+				</div>
+				<div class="clear"></div>
+			</section>
+		</div>
+	</div>
+</body>
+</html>
