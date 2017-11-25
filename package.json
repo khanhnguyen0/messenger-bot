@@ -18,12 +18,15 @@
   "homepage": "https://github.com/midofit/messenger-bot#readme",
   "dependencies": {
     "apiai": "^4.0.3",
+    "apiai-promise": "^1.0.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.17.1",
     "config": "^1.25.1",
     "express": "^4.15.2",
+    "install": "^0.10.2",
     "javascript-state-machine": "^3.0.1",
     "mongoose": "^4.11.14",
+    "npm": "^5.5.1",
     "ramda": "^0.23.0",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.3"
