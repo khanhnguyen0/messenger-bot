@@ -24,6 +24,7 @@
     "config": "^1.25.1",
     "express": "^4.15.2",
     "install": "^0.10.2",
+    "hbs": "^4.0.1",
     "javascript-state-machine": "^3.0.1",
     "mongoose": "^4.11.14",
     "npm": "^5.5.1",

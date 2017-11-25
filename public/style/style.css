@@ -1,0 +1,117 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
+border:0;
+font:inherit;
+font-size:100%;
+margin:0;
+padding:0;
+vertical-align:baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+display:block;
+}
+
+html, body {background: #181818; font-family: 'Lato', helvetica, arial, sans-serif; font-size: 16px; color: #222;}
+
+*{
+	box-sizing: border-box;
+}
+#cv {
+	width: 90%;
+	max-width: 800px;
+	margin: 30px auto;
+	background-color: #f3f3f3;
+}
+
+#general-info {
+	border-bottom: 2px solid black;
+	padding: 25px;
+}
+
+#general-info h1 {
+	font-size: 2.5em;
+	font-weight: 700;
+	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+#general-info h2 {
+	font-size: 2em;
+	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+#general-info h4 {
+	font-size: 1em;
+	margin-bottom: 5px;
+    color: #444;
+}
+
+.left-column {
+	float: left;
+}
+
+.right-column {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+#main-cv {
+	padding: 0 40px;
+}
+
+section {
+	padding: 20px 0 0;
+	border-top: 1px solid #dedede;
+}
+
+section:first-of-type {
+	border-top: 0;
+}
+
+.section-title {
+	float: left;
+	width: 25%
+}
+
+.section-title h2 {
+	font-size: 1.5em;
+	font-style: italic;
+	padding-right: 5px;
+}
+
+.section-content {
+	float: right;
+	width: 75%
+}
+
+.section-content h3 {
+	font-size: 1.2em;
+	margin-bottom: 2px
+}
+
+.section-content h4 {
+	font-size: 1em;
+	margin-bottom: 2px
+}
+
+.section-content .year {
+	font-size: 0.8em;
+	margin-bottom: 3px;
+	font-style: italic;
+}
+
+.section-content .description {
+	font-size: 1em;
+	color: #444;
+}
+
+.section-content .proficiency {
+	font-size: 0.8em;
+	font-style: italic;
+}
+
+article {
+	margin-bottom: 20px;
+}
