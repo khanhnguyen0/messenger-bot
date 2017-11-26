@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const receiveMessage = require('./facebook-messenger/receive-message')
+const receivePostback = require('./message-handler/postback-handler')
 const config = require('config')
 
 const hbs = require('hbs')

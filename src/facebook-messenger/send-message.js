@@ -326,7 +326,7 @@ const postbackMessage = (id, {title, subtitle, item_url, image_url, buttons}) =>
 */
 const carouselMessage = (id, elements) => {
 
-	console.log("Sending carousel message")
+	console.log("Sending carousel message",elements)
 
 	const messageData = {
 		recipient: {
@@ -344,7 +344,6 @@ const carouselMessage = (id, elements) => {
 	}
 
 	return typingOn(id)
-	.then( () => appearHuman() )
 	.then( () => fbAPI(messageData) )
 
 }
