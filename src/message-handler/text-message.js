@@ -6,7 +6,7 @@ const send = require('../facebook-messenger/send-message')
 const mongoose = require('../util/mongoose')
 const {addEducation,editEducation} = require('../user-info/education')
 const {addExperience, editExperience} = require('../user-info/experience')
-const {askSkill,editSkill} = require('../user-info/skill')
+const {addSkill,editSkill} = require('../user-info/skill')
 const User = require('../model/user.js');
 const state = {}
 
@@ -33,7 +33,7 @@ module.exports = async(senderId, message, quickReply) => {
       // console.log(response)
       switch (state[senderId]){
         case 'create_skill':
-        const skill = await askSkill(senderId,message)
+        const skill = await addSkill(senderId,message)
         if (skill) {
           state[senderId] = undefined // clear the bot state
           u.skill.push(skill)
