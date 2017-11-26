@@ -2,6 +2,7 @@ const {textMessage, quickReply} = require('../facebook-messenger/send-message')
 
 const state = {}
 const userInput = {}
+const send = require('../facebook-messenger/send-message')
 
 const askSkillLevel = (userID) =>{
   state[userID]++
@@ -53,4 +54,25 @@ const addSkill = async (userID,payload)=>{
     return userInput[userID]
   }
 }
-module.exports = addSkill
+
+const editSkill = async(userID, skills) => {
+  if (skills.length == 0) return send.textMessage(userID, 'Sorry, you have no skill to edit')
+
+  const elements = skills.map((s,i)=>{
+    return {
+      title:s.name,
+      subtitle:`${s.name}\n${s.level}`,
+      buttons:[{
+        type:"postback",
+        title:"delete",
+        payload:JSON.stringify({
+          action:"delete_skill",
+          index:i
+        })
+      }]
+    }
+  })
+  return send.carouselMessage(userID,elements)
+}
+
+module.exports = {addSkill,editSkill}

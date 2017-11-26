@@ -2,7 +2,7 @@ const {textMessage, quickReply} = require('../facebook-messenger/send-message')
 
 const state = {}
 const userInput = {}
-
+const send = require('../facebook-messenger/send-message')
 const askEducationLevel = (userID) =>{
   state[userID]++
   const choices = [
@@ -86,4 +86,24 @@ const addEducation = async (userID,payload)=>{
     return userInput[userID]
   }
 }
-module.exports = addEducation
+
+const editEducation = async(userID, educations) => {
+  if (educations.length == 0) return send.textMessage(userID, 'Sorry, you have no education to edit')
+
+  const elements = educations.map((e,i)=>{
+    return {
+      title:e.level,
+      subtitle:`${e.school}\n${e.from}-${e.to}\n${e.degree}`,
+      buttons:[{
+        type:"postback",
+        title:"delete",
+        payload:JSON.stringify({
+          action:"delete_education",
+          index:i
+        })
+      }]
+    }
+  })
+  return send.carouselMessage(userID,elements)
+}
+module.exports = {addEducation,editEducation}

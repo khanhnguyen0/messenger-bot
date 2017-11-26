@@ -2,6 +2,7 @@ const {textMessage, quickReply} = require('../facebook-messenger/send-message')
 
 const state = {}
 const userInput = {}
+const send = require('../facebook-messenger/send-message')
 
 const askDescription = (userID) =>{
   state[userID]++
@@ -67,4 +68,25 @@ const addExperience = async (userID,payload)=>{
     return userInput[userID]
   }
 }
-module.exports = addExperience
+
+const editExperience = async(userID, experience) => {
+  if (experience.length == 0) return send.textMessage(userID, 'Sorry, you have no experience to edit')
+
+  const elements = experience.map((e,i)=>{
+    return {
+      title:e.title,
+      subtitle:`${e.company}\n${e.from}-${e.to}\n${e.description}`,
+      buttons:[{
+        type:"postback",
+        title:"delete",
+        payload:JSON.stringify({
+          action:"delete_experience",
+          index:i
+        })
+      }]
+    }
+  })
+  return send.carouselMessage(userID,elements)
+}
+
+module.exports = {addExperience, editExperience}
