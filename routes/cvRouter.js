@@ -1,15 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
+const mongoose = require('../src/util/mongoose')
 
 const cvRouter = express.Router()
 
 cvRouter.use(bodyParser.json())
 const User = require('../src/model/user.js');
 
-
-mongoose.connect('mongodb://read:read@ds159254.mlab.com:59254/refugee')
-mongoose.Promise = require('bluebird')
 cvRouter.route('/:userId')
 .get(async (req, res) => {
 	const userId = req.params.userId

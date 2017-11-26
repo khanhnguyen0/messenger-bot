@@ -3,16 +3,14 @@ const apiai = require('apiai-promise');
 const client = apiai('020e56ddc62c45d5898c84e717df0831')
 
 const send = require('../facebook-messenger/send-message')
-const mongoose = require('mongoose')
-const askEducation = require('../user-info/education')
-const askExperience = require('../user-info/experience')
-const askSkill = require('../user-info/skill')
+const mongoose = require('../util/mongoose')
+const {addEducation,editEducation} = require('../user-info/education')
+const {addExperience, editExperience} = require('../user-info/experience')
+const {askSkill,editSkill} = require('../user-info/skill')
 const User = require('../model/user.js');
 const state = {}
 
 module.exports = async(senderId, message, quickReply) => {
-  mongoose.connect('mongodb://root:root@ds159254.mlab.com:59254/refugee')
-  mongoose.Promise = require('bluebird')
   const u = await User.findOne({id: senderId})
 
     if (u)
@@ -48,7 +46,7 @@ module.exports = async(senderId, message, quickReply) => {
         break
 
       case 'create_education':
-      const education = await askEducation(senderId,message)
+      const education = await addEducation(senderId,message)
       if (education) {
         state[senderId] = undefined // clear the bot state
         u.education.push(education)
@@ -60,7 +58,7 @@ module.exports = async(senderId, message, quickReply) => {
       break
 
       case 'create_experience':
-      const experience = await askExperience(senderId,message)
+      const experience = await addExperience(senderId,message)
       if (experience) {
         state[senderId] = undefined // clear the bot state
         u.experience.push(experience)
@@ -72,15 +70,21 @@ module.exports = async(senderId, message, quickReply) => {
       break
 
       case 'edit_education':
-      
+      state[senderId] = undefined
+      // console.log(u.skill)
+      return editEducation(senderId,u.education)
       break
 
       case 'edit_skill':
-
+      state[senderId] = undefined
+      // console.log(u.skill)
+      return editSkill(senderId,u.skill)
       break
 
       case 'edit_experience':
-
+      state[senderId] = undefined
+      // console.log(u.skill)
+      return editExperience(senderId,u.experience)
       break
 
       default:
