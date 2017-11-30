@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sewi CV - {{name}}</title>
+	<title>Sewi CV - {{firstname}}</title>
 	<meta name="viewport" content="width=device-width"/>
 	<meta name="description" content="Sewi"/>
 	<meta charset="UTF-8"> 
@@ -14,13 +14,12 @@
 	<div id="cv">
 		<div id="general-info">
 			<div class="left-column">
-				<h1>{{name}}</h1>
-				<h2>{{age}} years old</h2>
+				<h1>{{firstname}} {{lastname}}</h1>
 			</div>
 			<div class="right-column">
 				<h4>Email: {{email}}</h4>
 				<h4>Phone: {{phone}}</h4>
-				<h4>Adress: {{address}}</h4>
+				<!--h4>Languages: {{languages}}</h4-->
 			</div>
 
 			<div class="clear"></div>
@@ -75,6 +74,24 @@
 						<div class="degree-name">{{degree}}</div>
 					</article>
 					{{/education}}
+				</div>
+				<div class="clear"></div>
+			</section>
+			<section id="languages">
+				<div class="section-title">
+					<h2>
+						Key skills
+					</h2>
+				</div>
+				<div class="section-content">
+					{{#skill}}
+					<article>
+						<h4>{{name}}</h4>
+						<div class="proficiency">
+							{{level}}
+						</div>
+					</article>
+					{{/skill}}
 				</div>
 				<div class="clear"></div>
 			</section>

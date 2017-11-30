@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
     "id": {type:String,unique:true},
-    "name": String,
-    "age": String,
+    "firstname": String,
+    "lastname": String,
     "phone": String,
     "email": String,
     "languages": [String],

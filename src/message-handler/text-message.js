@@ -1,5 +1,4 @@
 const apiai = require('apiai-promise');
-
 const client = apiai('020e56ddc62c45d5898c84e717df0831')
 
 const send = require('../facebook-messenger/send-message')
@@ -87,6 +86,11 @@ module.exports = async(senderId, message, quickReply) => {
       return editExperience(senderId,u.experience)
       break
 
+      case 'show_cv': 
+      state[senderId] = undefined
+      return send.textMessage(senderId, `Your CV is served here: https://sewi.herokuapp.com/cv/${senderId}`)
+      break
+
       default:
       return send.textMessage(senderId,"Sorry I can't understand")
       }
@@ -118,8 +122,8 @@ const createUser = async (senderId, message) => {
     } else {
       var user = new User({
         "id": senderId,
-        "name": parameters.name,
-        "age": parameters.age.amount,
+        "firstname": parameters.firstname,
+        "lastname": parameters.lastname,
         "phone": parameters.phone,
         "email": parameters.email,
         "languages": parameters.language,
@@ -135,7 +139,7 @@ const createUser = async (senderId, message) => {
           console.log('ERROR SAVING USER TO mongodb ', err);
           return send.textMessage(senderId, 'ERROR SAVING USER TO mongodb');
         }
-        return send.textMessage(senderId, 'User is saved to mongodb');
+        return send.textMessage(senderId, 'Your information is saved!');
 
       });
       return send.textMessage(senderId, fulfillment.speech)

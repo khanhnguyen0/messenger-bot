@@ -49,8 +49,11 @@ const askDegree = (userID) =>{
 }
 
 const addEducation = async (userID,payload)=>{
-  if (!state[userID]) state[userID] = 0 // initialize state for new user
-  if (!userInput[userID]) userInput[userID] = {} //initialize the user input
+  // initialize state for new user
+  if (!state[userID]) state[userID] = 0 
+  //initialize the user input
+  if (!userInput[userID]) userInput[userID] = {} 
+  
   switch (state[userID]){
     case 0:
     // if (!payload){ //user select none
