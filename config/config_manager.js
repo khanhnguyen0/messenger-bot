@@ -1,8 +1,6 @@
-const debug = require('./default.json')
+const debug = require('./default.json');
 // const production = require('./production.json')
 
-const config_manager = (prod) => {
-	return debug
-}
+const config_manager = prod => debug; // eslint-disable-line
 
-module.exports = config_manager
+module.exports = config_manager; // eslint-disable-line

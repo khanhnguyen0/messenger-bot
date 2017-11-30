@@ -1,79 +1,76 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('../src/util/mongoose')
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const cvRouter = express.Router()
-
-cvRouter.use(bodyParser.json())
+const cvRouter = express.Router();
+cvRouter.use(bodyParser.json());
 const User = require('../src/model/user.js');
 
 cvRouter.route('/:userId')
-.get(async (req, res) => {
-	const userId = req.params.userId
-	console.log('USER ID: ', userId)
-	// Get user object from MongoDb
-	const user = await User.findOne({id:userId})
+  .get(async (req, res) => {
+    const userId = req.params.userId;
+    console.log('USER ID: ', userId);
+    // Get user object from MongoDb
+    const user = await User.findOne({ id: userId });
 
-	_formatUserInfo(user);
+    formatUserInfo(user);
 
     // render cv using template
-    res.render('cv.hbs', user)
-})
-
-/**
- *
- * format user information
- *
- */
-const _formatUserInfo = (user) => {
-	user.firstname = _toTitleCase(user.firstname);
-	user.lastname = _toTitleCase(user.lastname);
-
-	user.education = user.education.map((edu) => {
-		edu.level = _formatEducationLevel(edu.level);
-		edu.degree = _toTitleCase(edu.degree);
-		edu.school = _toTitleCase(edu.school);
-
-		return edu;
-	})
-
-	user.experience = user.experience.map(exp => {
-		exp.company = _toTitleCase(exp.company);
-		exp.title = _toTitleCase(exp.title);
-
-		return exp;
-	})
-
-	return user;
-}
+    res.render('cv.hbs', user);
+  });
 
 /**
  *
  * Changing the string e.g. 'helsinki metropolia' => 'Helsinki Metropolia'
  *
  */
-const _toTitleCase = (str) => {
-    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-}
+const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
 /**
  *
  * Return the correct form of educational level
  *
  */
-const _formatEducationLevel = (level) => {
-	switch (level){
-		case 'bachelor': 
-			return 'Bachelor\'s Degree';
-		case 'master':
-			return 'Master\' Degree';
-		case 'vocation_school':
-			return 'Vocational School';
-		case 'phd':
-			return 'PhD';
-		default:
-			return level;
-	}
-}
+const formatEducationLevel = (level) => {
+  switch (level) {
+    case 'bachelor':
+      return 'Bachelor\'s Degree';
+    case 'master':
+      return 'Master\' Degree';
+    case 'vocationschool':
+      return 'Vocational School';
+    case 'phd':
+      return 'PhD';
+    default:
+      return level;
+  }
+};
+
+/**
+ *
+ * format user information
+ *
+ */
+const formatUserInfo = (user) => {
+  const formattedUser = JSON.parse(JSON.stringify(user));
+  formattedUser.firstname = toTitleCase(formattedUser.firstname);
+  formattedUser.lastname = toTitleCase(formattedUser.lastname);
+
+  formattedUser.education = formattedUser.education.map((edu) => {
+    edu.level = formatEducationLevel(edu.level);
+    edu.degree = toTitleCase(edu.degree);
+    edu.school = toTitleCase(edu.school);
+
+    return edu;
+  });
+
+  formattedUser.experience = formattedUser.experience.map((exp) => {
+    exp.company = toTitleCase(exp.company);
+    exp.title = toTitleCase(exp.title);
+
+    return exp;
+  });
+
+  return formattedUser;
+};
 
 module.exports = cvRouter;
