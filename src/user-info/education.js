@@ -7,11 +7,11 @@ const askEducationLevel = (userID) =>{
   state[userID]++
   const choices = [
     {
-      title:"Bachelor degree",
+      title:"Bachelor's degree",
       payload:"bachelor"
     },
     {
-      title:"Master degree",
+      title:"Master's degree",
       payload:"master"
     },
     {
@@ -19,8 +19,8 @@ const askEducationLevel = (userID) =>{
       payload:"vocation_school"
     },
     {
-      title:"None",
-      payload:""
+      title:"PhD",
+      payload:"phd"
     }
   ]
   return quickReply(userID,choices,"Select education level")
@@ -53,7 +53,7 @@ const addEducation = async (userID,payload)=>{
   if (!state[userID]) state[userID] = 0 
   //initialize the user input
   if (!userInput[userID]) userInput[userID] = {} 
-  
+
   switch (state[userID]){
     case 0:
     // if (!payload){ //user select none

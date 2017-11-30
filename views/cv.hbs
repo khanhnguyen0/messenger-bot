@@ -80,18 +80,13 @@
 			<section id="languages">
 				<div class="section-title">
 					<h2>
-						Key skills
+						Languages
 					</h2>
 				</div>
 				<div class="section-content">
-					{{#skill}}
-					<article>
-						<h4>{{name}}</h4>
-						<div class="proficiency">
-							{{level}}
-						</div>
-					</article>
-					{{/skill}}
+					{{#each languages}}
+					<span class="language">{{this}}</span>
+					{{/each}}
 				</div>
 				<div class="clear"></div>
 			</section>

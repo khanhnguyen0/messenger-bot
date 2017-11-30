@@ -66,8 +66,12 @@ section {
 	border-top: 1px solid #dedede;
 }
 
-section:first-of-type {
+#main-cv section:first-of-type {
 	border-top: 0;
+}
+
+#main-cv section:last-of-type {
+	padding-bottom: 20px;
 }
 
 .section-title {
@@ -110,6 +114,12 @@ section:first-of-type {
 .section-content .proficiency {
 	font-size: 0.8em;
 	font-style: italic;
+}
+
+.section-content span.language {
+	display: inline-block;
+	margin-right: 20px;
+	margin-bottom: 10px;
 }
 
 article {
