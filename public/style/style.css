@@ -125,3 +125,23 @@ section {
 article {
 	margin-bottom: 20px;
 }
+
+#skill article {
+	margin-bottom: 10px;
+}
+
+@media all and (max-width: 480px) {
+	#general-info {
+		padding: 15px;
+		text-align: center;
+	}
+
+	.left-column, .right-column, .section-content, .section-title {
+		float: none;
+		width: 100%;
+	}
+
+	.section-title {
+		margin-bottom: 20px;
+	}
+}

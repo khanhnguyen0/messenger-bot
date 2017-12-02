@@ -1,7 +1,7 @@
-const incomingTextMessage = require('./text-message');
-const incomingAudioMessage = require('./audio-message');
+const incomingTextMessage = require('./text-message')
+const incomingAudioMessage = require('./audio-message')
 
 module.exports = {
-  incomingTextMessage,
-  incomingAudioMessage,
-};
+	incomingTextMessage,
+	incomingAudioMessage,
+}

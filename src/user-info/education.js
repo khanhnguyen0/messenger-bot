@@ -68,17 +68,14 @@ const addEducation = async (userID, payload) => {
     case 1:
       userInput[userID].level = payload;
       return askStartYear(userID);
-      break;
 
     case 2:
       userInput[userID].from = payload;
       return askEndYear(userID);
-      break;
 
     case 3:
       userInput[userID].to = payload;
       return askSchoolName(userID);
-      break;
 
     case 4:
       userInput[userID].school = payload;
