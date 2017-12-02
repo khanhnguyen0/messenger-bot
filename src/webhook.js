@@ -37,11 +37,11 @@ if (!(APP_SECRET && VALIDATION_TOKEN && SERVER_URL)) {
 const app = express()
 // app.set('view engine', 'ejs')
 app.set('view engine', 'hbs')
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(path.resolve(__dirname, '../public')))
 
+// served for the cv
 app.use('/cv', cvRouter)
 
 app.get('/webhook', (req, res) => {
@@ -75,54 +75,9 @@ app.post('/webhook', (req, res) => {
 	}
 
 	// Assume all went well.
-	//
 	// You must send back a 200, within 20 seconds, to let us know you've
 	// successfully received the callback. Otherwise, the request will time out.
 	res.sendStatus(200)
 })
-
-
-app.get('/cv', (req, res) => {
-	const user = {
-		id: 1235,
-		name: 'Thanh Binh Tran',
-		age: '23',
-		phone: '012345678',
-		email: 'kjd@mail.com',
-		address: 'Kaivokatu 8B',
-		languages: ['vn', 'vvd', 'fddf'],
-		education: [{
-			level: 'Bachelor\'s degree',
-			from: 2014,
-			to: 2018,
-			school: 'Metropolia UAS',
-			degree: 'Information Technology',
-		}],
-		experience: [{
-			from: 2013,
-			to: 2016,
-			company: 'Transval Oy',
-			description: 'This is a description',
-			title: 'Logistic worker',
-		}, {
-			from: 2016,
-			to: 'present',
-			company: 'Frosmo Oy',
-			description: 'This is a description',
-			title: 'Web developer',
-		}],
-		skill: [{
-			name: 'JavaScript',
-			level: 'Advanced',
-		},
-		{
-			name: 'Web development',
-			level: 'Advanced',
-		},
-		],
-	}
-	res.render('cv.hbs', user)
-})
-
 
 module.exports = app

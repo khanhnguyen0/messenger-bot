@@ -19,7 +19,7 @@ const receivePostback = async (message) => {
       console.log(u);
       u.save((err) => {
         if (err) return send.textMessage(id, 'Error deleting experience, try again');
-        return send.textMessage(id, 'experience deleted successfully');
+        return send.textMessage(id, 'Experience deleted successfully');
       });
       break;
 
@@ -32,7 +32,7 @@ const receivePostback = async (message) => {
       }
       u.save((err) => {
         if (err) return send.textMessage(id, 'Error deleting skill, try again');
-        return send.textMessage(id, 'skill deleted successfully');
+        return send.textMessage(id, 'Skill deleted successfully');
       });
       break;
 
@@ -45,7 +45,7 @@ const receivePostback = async (message) => {
       }
       u.save((err) => {
         if (err) return send.textMessage(id, 'Error deleting education, try again');
-        return send.textMessage(id, 'education deleted successfully');
+        return send.textMessage(id, 'Education deleted successfully');
       });
       break;
 
