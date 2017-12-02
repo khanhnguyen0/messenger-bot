@@ -14,7 +14,7 @@ const receivePostback = async (message) => {
       {
         u.experience = [];
       } else {
-        u.experience = u.experience.splice(payload.index, 1);
+        u.experience.splice(payload.index, 1);
       }
       console.log(u);
       u.save((err) => {
@@ -28,7 +28,7 @@ const receivePostback = async (message) => {
       {
         u.skill = [];
       } else {
-        u.skill = u.skill.splice(payload.index, 1);
+        u.skill.splice(payload.index, 1);
       }
       u.save((err) => {
         if (err) return send.textMessage(id, 'Error deleting skill, try again');
@@ -41,7 +41,7 @@ const receivePostback = async (message) => {
       {
         u.education = [];
       } else {
-        u.education = u.education.splice(payload.index, 1);
+        u.education.splice(payload.index, 1);
       }
       u.save((err) => {
         if (err) return send.textMessage(id, 'Error deleting education, try again');
